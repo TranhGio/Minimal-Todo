@@ -38,6 +38,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class ReminderFragment extends AppDefaultFragment {
     private TextView mtoDoTextTextView;
+    private TextView mtoDoTextTextViewDescription;
     private Button mRemoveToDoButton;
     private MaterialSpinner mSnoozeSpinner;
     private String[] snoozeOptionsArray;
@@ -81,12 +82,13 @@ public class ReminderFragment extends AppDefaultFragment {
 
         mRemoveToDoButton = (Button) view.findViewById(R.id.toDoReminderRemoveButton);
         mtoDoTextTextView = (TextView) view.findViewById(R.id.toDoReminderTextViewBody);
+        mtoDoTextTextViewDescription = (TextView) view.findViewById(R.id.toDoReminderTextViewDescription);
         mSnoozeTextView = (TextView) view.findViewById(R.id.reminderViewSnoozeTextView);
         mSnoozeSpinner = (MaterialSpinner) view.findViewById(R.id.todoReminderSnoozeSpinner);
 
 //        mtoDoTextTextView.setBackgroundColor(item.getTodoColor());
         mtoDoTextTextView.setText(mItem.getToDoText());
-
+        mtoDoTextTextViewDescription.setText(mItem.getmToDoDescription());
         if (theme.equals(MainFragment.LIGHTTHEME)) {
             mSnoozeTextView.setTextColor(getResources().getColor(R.color.secondary_text));
         } else {
@@ -99,12 +101,13 @@ public class ReminderFragment extends AppDefaultFragment {
         mRemoveToDoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                app.send(this, "Action", "Todo Removed from Reminder Activity");
-                mToDoItems.remove(mItem);
-                changeOccurred();
-                saveData();
-                closeApp();
-//                finish();
+//                app.send(this, "Action", "Todo Removed from Reminder Activity");
+//                mToDoItems.remove(mItem);
+//                changeOccurred();
+//                saveData();
+//                closeApp();
+////                finish();
+                getActivity().finish();
             }
         });
 

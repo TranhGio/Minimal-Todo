@@ -152,11 +152,6 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
             reminderRemindMeTextView.setTextColor(Color.WHITE);
         }
 
-
-
-        //Button for Copy to Clipboard
-        mCopyClipboard = (Button) view.findViewById(R.id.copyclipboard);
-
         mContainerLayout = (LinearLayout) view.findViewById(R.id.todoReminderAndDateContainerLayout);
         mUserDateSpinnerContainingLinearLayout = (LinearLayout) view.findViewById(R.id.toDoEnterDateLinearLayout);
         mToDoTextBodyEditText = (EditText) view.findViewById(R.id.userToDoEditText);
@@ -165,26 +160,6 @@ public class AddToDoFragment extends AppDefaultFragment implements DatePickerDia
 //        mLastSeenTextView = (TextView)findViewById(R.id.toDoLastEditedTextView);
         mToDoSendFloatingActionButton = (FloatingActionButton) view.findViewById(R.id.makeToDoFloatingActionButton);
         mReminderTextView = (TextView) view.findViewById(R.id.newToDoDateTimeReminderTextView);
-
-
-        //OnClickListener for CopyClipboard Button
-        mCopyClipboard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String toDoTextContainer = mToDoTextBodyEditText.getText().toString();
-                String toDoTextBodyDescriptionContainer = mToDoTextBodyDescription.getText().toString();
-                ClipboardManager clipboard = (ClipboardManager) getActivity().getSystemService(Context.CLIPBOARD_SERVICE);
-                CombinationText = "Title : " + toDoTextContainer + "\nDescription : " + toDoTextBodyDescriptionContainer + "\n -Copied From MinimalToDo";
-                ClipData clip = ClipData.newPlainText("text", CombinationText);
-                clipboard.setPrimaryClip(clip);
-                Toast.makeText(getContext(), "Copied To Clipboard!", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-
-
-
-
 
         mContainerLayout.setOnClickListener(new View.OnClickListener() {
             @Override
